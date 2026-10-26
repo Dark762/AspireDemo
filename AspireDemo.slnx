@@ -2,4 +2,5 @@
   <Project Path="AspireDemo.AppHost/AspireDemo.AppHost.csproj" />
   <Project Path="AspireDemo.ServiceDefaults/AspireDemo.ServiceDefaults.csproj" />
   <Project Path="AspireDemo.CatalogApi/AspireDemo.CatalogApi.csproj" />
+  <Project Path="AspireDemo.StorefrontApi/AspireDemo.StorefrontApi.csproj" />
 </Solution>
