@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
 
@@ -17,6 +18,12 @@ public static class Extensions
         {
             http.AddStandardResilienceHandler();
             http.AddServiceDiscovery();
+        });
+
+        builder.Logging.AddOpenTelemetry(logging =>
+        {
+            logging.IncludeFormattedMessage = true;
+            logging.IncludeScopes = true;
         });
 
         builder.Services.AddOpenTelemetry()
@@ -39,7 +46,10 @@ public static class Extensions
 
     public static WebApplication MapDefaultEndpoints(this WebApplication app)
     {
-        app.MapHealthChecks("/health");
+        if (app.Environment.IsDevelopment())
+        {
+            app.MapHealthChecks("/health");
+        }
         return app;
     }
 }
