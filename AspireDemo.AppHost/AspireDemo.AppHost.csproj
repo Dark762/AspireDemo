@@ -1,0 +1,12 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.0.0">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="13.0.0" />
+    <ProjectReference Include="..\AspireDemo.CatalogApi\AspireDemo.CatalogApi.csproj" />
+  </ItemGroup>
+</Project>
